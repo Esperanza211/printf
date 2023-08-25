@@ -37,32 +37,32 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (*p != '\0') 
+	while (*p != '\0')
 	{
-		if (*p == '%') 
+		if (*p == '%')
 		{
 			p++;
-			if (*p == 'c') 
+			if (*p == 'c')
 			{
 				char c = va_arg(args, int);
 			
 				count += _putchar(c);
 			}
-			else if (*p == 's') 
+			else if (*p == 's')
 			{
 				char *str = va_arg(args, char *);
 				
-				count += handle_string(str); 
+				count += handle_string(str);
 			}
-			else if (*p == '%') 
+			else if (*p == '%')
 			{
 				_putchar('%');
-				count++; } 
+				count++; }
 			else
 			{
 				continue;
 			}
-		} 
+		}
 		else
 		{
 			_putchar(*p);
@@ -76,13 +76,13 @@ int _printf(const char *format, ...)
 * main - Entry point of the program
 * Return: number of prints.
 */
-int main()
+int main(void)
 {
 	int count;
 	
 	count = _printf("Hello, world\n");
 	printf("The number of caracters is %d\n", count);
 
-	return 0;
+	return (0);
 
 }

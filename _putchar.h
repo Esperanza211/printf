@@ -1,4 +1,8 @@
-#include "main.h"
+#ifndef _PUTCHAR_H
+#define _PUTCHAR_H
+
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
  * _putchar - function to print char
@@ -9,3 +13,4 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+#endif /* _PUTCHAR_H */
