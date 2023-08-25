@@ -1,5 +1,4 @@
 #include "main.h"
-#include "_putchar.h"
 /**
  * handle_string - prints a string with newline
  * @str: the string to print
@@ -22,6 +21,15 @@ int handle_string(char *str)
 		i++;
 	}
 	return (i);
+}
+/**
+ * _putchar - function to print char
+ * @c: char being passed
+ * Return: number of prints
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
 /**
  * _printf - Function to print a variety of data types
@@ -65,24 +73,11 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			_putchar('%');
 			_putchar(*p);
-			p++;
 			count++; }
 	}
 	va_end(args);
 	return (count);
 }
-/**
-* main - Entry point of the program
-* Return: number of prints.
-*/
-int main(void)
-{
-	int count;
 
-	count = _printf("Hello, world %%\n");
-	printf("The number of caracters is %d\n", count);
-
-	return (0);
-
-}
