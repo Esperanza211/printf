@@ -80,7 +80,7 @@ int main(void)
 {
 	int count;
 
-	count = _printf("Hello, world\n");
+	count = _printf("Hello, world %%\n");
 	printf("The number of caracters is %d\n", count);
 
 	return (0);
