@@ -10,7 +10,7 @@
 int handle_string(char *str)
 {
 	int i = 0;
-	
+
 	if (str == NULL)
 	{
 		handle_string("(null)");
@@ -45,13 +45,13 @@ int _printf(const char *format, ...)
 			if (*p == 'c')
 			{
 				char c = va_arg(args, int);
-			
+
 				count += _putchar(c);
 			}
 			else if (*p == 's')
 			{
 				char *str = va_arg(args, char *);
-				
+
 				count += handle_string(str);
 			}
 			else if (*p == '%')
@@ -79,7 +79,7 @@ int _printf(const char *format, ...)
 int main(void)
 {
 	int count;
-	
+
 	count = _printf("Hello, world\n");
 	printf("The number of caracters is %d\n", count);
 
