@@ -5,22 +5,16 @@
  *
  * Return: number of prints.
  */
-
 int handle_string(char *str)
 {
-	int i = 0;
+	int g;
 
-	if (str == NULL)
-	{
-		handle_string("(null)");
-		return (6);
-	}
-	while (str[i])
-	{
-		putchar(str[i]);
-		i++;
-	}
-	return (i);
+	g = 0;
+	if (!str)
+		str = "(null)";
+	while (*str)
+		g += write(1, str++, 1);
+	return (g);
 }
 /**
  * _putchar - function to print char
@@ -44,7 +38,6 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
 	while (*p != '\0')
 	{
 		if (*p == '%')
@@ -52,32 +45,32 @@ int _printf(const char *format, ...)
 			p++;
 			if (*p == 'c')
 			{
-				char c = va_arg(args, int);
-
-				count += _putchar(c);
+				p++;
+				count += _putchar(va_arg(args, int));
 			}
 			else if (*p == 's')
 			{
-				char *str = va_arg(args, char *);
-
-				count += handle_string(str);
+				p++;
+				count += handle_string(va_arg(args, char *));
 			}
 			else if (*p == '%')
 			{
-				_putchar('%');
-				count++; }
+				p++;
+				count += _putchar('%');
+			}
 			else
 			{
-				continue;
+				_putchar('%');
+				count += _putchar(*p);
 			}
 		}
-		else
+		else if (*p != '%')
 		{
-			_putchar('%');
 			_putchar(*p);
-			count++; }
+			p++;
+			count++;
+		}
 	}
 	va_end(args);
 	return (count);
 }
-
